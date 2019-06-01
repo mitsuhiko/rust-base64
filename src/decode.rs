@@ -28,7 +28,7 @@ pub enum DecodeError {
 }
 
 impl fmt::Display for DecodeError {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match *self {
             DecodeError::InvalidByte(index, byte) => {
                 write!(f, "Invalid byte {}, offset {}.", byte, index)
@@ -46,7 +46,7 @@ impl error::Error for DecodeError {
         }
     }
 
-    fn cause(&self) -> Option<&error::Error> {
+    fn cause(&self) -> Option<&dyn error::Error> {
         None
     }
 }
@@ -534,7 +534,7 @@ fn decode_chunk_precise(
 
 #[cfg(test)]
 mod tests {
-    extern crate rand;
+    use rand;
 
     use super::*;
     use crate::encode::encode_config_buf;

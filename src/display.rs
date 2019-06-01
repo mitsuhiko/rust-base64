@@ -32,7 +32,7 @@ pub struct Base64Display<'a> {
 
 impl<'a> Base64Display<'a> {
     /// Create a `Base64Display` with the provided config.
-    pub fn with_config(bytes: &[u8], config: Config) -> Result<Base64Display, DisplayError> {
+    pub fn with_config(bytes: &[u8], config: Config) -> Result<Base64Display<'_>, DisplayError> {
         ChunkedEncoder::new(config)
             .map(|c| Base64Display {
                 bytes,
@@ -44,18 +44,18 @@ impl<'a> Base64Display<'a> {
     }
 
     /// Convenience method for creating a `Base64Display` with the `STANDARD` configuration.
-    pub fn standard(bytes: &[u8]) -> Base64Display {
+    pub fn standard(bytes: &[u8]) -> Base64Display<'_> {
         Base64Display::with_config(bytes, super::STANDARD).expect("STANDARD is valid")
     }
 
     /// Convenience method for creating a `Base64Display` with the `URL_SAFE` configuration.
-    pub fn url_safe(bytes: &[u8]) -> Base64Display {
+    pub fn url_safe(bytes: &[u8]) -> Base64Display<'_> {
         Base64Display::with_config(bytes, super::URL_SAFE).expect("URL_SAFE is valid")
     }
 }
 
 impl<'a> Display for Base64Display<'a> {
-    fn fmt(&self, formatter: &mut Formatter) -> Result<(), fmt::Error> {
+    fn fmt(&self, formatter: &mut Formatter<'_>) -> Result<(), fmt::Error> {
         let mut sink = FormatterSink { f: formatter };
         self.chunked_encoder.encode(self.bytes, &mut sink)
     }

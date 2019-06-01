@@ -1,5 +1,5 @@
-extern crate base64;
-extern crate rand;
+use base64;
+use rand;
 
 use rand::Rng;
 

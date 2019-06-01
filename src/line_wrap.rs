@@ -157,7 +157,7 @@ pub fn line_wrap(
 
 #[cfg(test)]
 mod tests {
-    extern crate rand;
+    use rand;
 
     use super::*;
 

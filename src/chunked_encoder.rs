@@ -165,7 +165,7 @@ fn max_input_length(encoded_buf_len: usize, config: &Config) -> Result<usize, Ch
 
 #[cfg(test)]
 pub mod tests {
-    extern crate rand;
+    use rand;
 
     use super::*;
     use crate::tests::random_config;

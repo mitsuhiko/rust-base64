@@ -1,4 +1,4 @@
-extern crate rand;
+use rand;
 
 use crate::encode::encoded_size;
 use crate::line_wrap::line_wrap_parameters;

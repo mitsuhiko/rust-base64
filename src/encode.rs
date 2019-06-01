@@ -344,7 +344,7 @@ pub fn add_padding(input_len: usize, output: &mut [u8]) -> usize {
 
 #[cfg(test)]
 mod tests {
-    extern crate rand;
+    use rand;
 
     use super::*;
     use crate::decode::decode_config_buf;
