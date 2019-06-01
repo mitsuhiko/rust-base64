@@ -432,7 +432,7 @@ pub mod tests {
             encoder.encode(bytes, &mut sink).unwrap();
         }
 
-        return sink.string;
+        sink.string
     }
 
     fn random_config_for_chunked_encoder<R: Rng>(

@@ -69,9 +69,9 @@ pub fn line_wrap_parameters(
     LineWrapParameters {
         lines_with_endings: num_lines_with_endings,
         last_line_len: last_line_length,
-        total_full_wrapped_lines_len: total_full_wrapped_lines_len,
+        total_full_wrapped_lines_len,
         total_len: total_all_wrapped_len,
-        total_line_endings_len: total_line_endings_len,
+        total_line_endings_len,
     }
 }
 

@@ -87,11 +87,11 @@ mod tests {
     fn basic_display() {
         assert_eq!(
             "~$Zm9vYmFy#*",
-            format!("~${}#*", Base64Display::standard("foobar".as_bytes()))
+            format!("~${}#*", Base64Display::standard(b"foobar"))
         );
         assert_eq!(
             "~$Zm9vYmFyZg==#*",
-            format!("~${}#*", Base64Display::standard("foobarf".as_bytes()))
+            format!("~${}#*", Base64Display::standard(b"foobarf"))
         );
     }
 

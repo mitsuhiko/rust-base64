@@ -90,16 +90,16 @@ pub enum CharacterSet {
 }
 
 impl CharacterSet {
-    fn encode_table(&self) -> &'static [u8; 64] {
-        match *self {
+    fn encode_table(self) -> &'static [u8; 64] {
+        match self {
             CharacterSet::Standard => tables::STANDARD_ENCODE,
             CharacterSet::UrlSafe => tables::URL_SAFE_ENCODE,
             CharacterSet::Crypt => tables::CRYPT_ENCODE,
         }
     }
 
-    fn decode_table(&self) -> &'static [u8; 256] {
-        match *self {
+    fn decode_table(self) -> &'static [u8; 256] {
+        match self {
             CharacterSet::Standard => tables::STANDARD_DECODE,
             CharacterSet::UrlSafe => tables::URL_SAFE_DECODE,
             CharacterSet::Crypt => tables::CRYPT_DECODE,
@@ -117,8 +117,8 @@ pub enum LineEnding {
 }
 
 impl LineEnding {
-    fn len(&self) -> usize {
-        match *self {
+    fn len(self) -> usize {
+        match self {
             LineEnding::LF => 1,
             LineEnding::CRLF => 2,
         }

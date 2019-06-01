@@ -140,7 +140,7 @@ pub fn decode_config_buf<T: ?Sized + AsRef<[u8]>>(
     let bytes_written;
     {
         let buffer_slice = &mut buffer.as_mut_slice()[starting_output_len..];
-        bytes_written = decode_helper(input_bytes, num_chunks, &config.char_set, buffer_slice)?;
+        bytes_written = decode_helper(input_bytes, num_chunks, config.char_set, buffer_slice)?;
     }
 
     buffer.truncate(starting_output_len + bytes_written);
@@ -173,7 +173,7 @@ pub fn decode_config_slice<T: ?Sized + AsRef<[u8]>>(
     decode_helper(
         input_bytes,
         num_chunks(input_bytes),
-        &config.char_set,
+        config.char_set,
         output,
     )
 }
@@ -202,7 +202,7 @@ fn copy_without_whitespace(input: &[u8]) -> Vec<u8> {
 fn decode_helper(
     input: &[u8],
     num_chunks: usize,
-    char_set: &CharacterSet,
+    char_set: CharacterSet,
     output: &mut [u8],
 ) -> Result<usize, DecodeError> {
     let decode_table = char_set.decode_table();
@@ -384,7 +384,7 @@ fn decode_helper(
             return Err(DecodeError::InvalidByte(start_of_leftovers + i, *b));
         }
 
-        leftover_bits |= (morsel as u64) << shift;
+        leftover_bits |= u64::from(morsel) << shift;
         morsels_in_leftover += 1;
     }
 
@@ -437,7 +437,7 @@ fn decode_chunk(
     if morsel == tables::INVALID_VALUE {
         return Err(DecodeError::InvalidByte(index_at_start_of_input, input[0]));
     }
-    accum = (morsel as u64) << 58;
+    accum = u64::from(morsel) << 58;
 
     let morsel = decode_table[input[1] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -446,7 +446,7 @@ fn decode_chunk(
             input[1],
         ));
     }
-    accum |= (morsel as u64) << 52;
+    accum |= u64::from(morsel) << 52;
 
     let morsel = decode_table[input[2] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -455,7 +455,7 @@ fn decode_chunk(
             input[2],
         ));
     }
-    accum |= (morsel as u64) << 46;
+    accum |= u64::from(morsel) << 46;
 
     let morsel = decode_table[input[3] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -464,7 +464,7 @@ fn decode_chunk(
             input[3],
         ));
     }
-    accum |= (morsel as u64) << 40;
+    accum |= u64::from(morsel) << 40;
 
     let morsel = decode_table[input[4] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -473,7 +473,7 @@ fn decode_chunk(
             input[4],
         ));
     }
-    accum |= (morsel as u64) << 34;
+    accum |= u64::from(morsel) << 34;
 
     let morsel = decode_table[input[5] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -482,7 +482,7 @@ fn decode_chunk(
             input[5],
         ));
     }
-    accum |= (morsel as u64) << 28;
+    accum |= u64::from(morsel) << 28;
 
     let morsel = decode_table[input[6] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -491,7 +491,7 @@ fn decode_chunk(
             input[6],
         ));
     }
-    accum |= (morsel as u64) << 22;
+    accum |= u64::from(morsel) << 22;
 
     let morsel = decode_table[input[7] as usize];
     if morsel == tables::INVALID_VALUE {
@@ -500,7 +500,7 @@ fn decode_chunk(
             input[7],
         ));
     }
-    accum |= (morsel as u64) << 16;
+    accum |= u64::from(morsel) << 16;
 
     BigEndian::write_u64(output, accum);
 

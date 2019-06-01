@@ -520,7 +520,7 @@ mod tests {
             assert_encode_sanity(&encoded_data_with_prefix[prefix_len..], &config, input_len);
 
             // append plain encode onto prefix
-            prefix.push_str(&mut encoded_data_no_prefix);
+            prefix.push_str(&encoded_data_no_prefix);
 
             assert_eq!(prefix, encoded_data_with_prefix);
 
