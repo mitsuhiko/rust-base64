@@ -145,8 +145,8 @@ pub fn line_wrap(
             LineEnding::CRLF => {
                 encoded_buf[after_new_line] = b'\r';
                 encoded_buf[after_new_line
-                                .checked_add(1)
-                                .expect("Line ending index exceeds usize")] = b'\n';
+                    .checked_add(1)
+                    .expect("Line ending index exceeds usize")] = b'\n';
                 line_ending_bytes += 2;
             }
         }

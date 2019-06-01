@@ -5,8 +5,10 @@ extern crate rand;
 extern crate test;
 
 use base64::display;
-use base64::{decode, decode_config_buf, decode_config_slice, encode, encode_config_buf,
-             encode_config_slice, Config, MIME, STANDARD};
+use base64::{
+    decode, decode_config_buf, decode_config_slice, encode, encode_config_buf, encode_config_slice,
+    Config, MIME, STANDARD,
+};
 
 use rand::Rng;
 use test::Bencher;

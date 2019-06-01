@@ -445,9 +445,11 @@ pub mod tests {
             // only use a config with line_len that is divisible by 4
             match config.line_wrap {
                 LineWrap::NoWrap => return config,
-                LineWrap::Wrap(line_len, _) => if line_len % 4 == 0 {
-                    return config;
-                },
+                LineWrap::Wrap(line_len, _) => {
+                    if line_len % 4 == 0 {
+                        return config;
+                    }
+                }
             }
         }
     }

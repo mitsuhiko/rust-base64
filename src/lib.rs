@@ -56,8 +56,14 @@
 //! The `_slice` flavors of encode or decode will panic if the provided output slice is too small,
 
 #![deny(
-    missing_docs, trivial_casts, trivial_numeric_casts, unused_extern_crates, unused_import_braces,
-    unused_results, variant_size_differences, warnings
+    missing_docs,
+    trivial_casts,
+    trivial_numeric_casts,
+    unused_extern_crates,
+    unused_import_braces,
+    unused_results,
+    variant_size_differences,
+    warnings
 )]
 
 extern crate byteorder;
