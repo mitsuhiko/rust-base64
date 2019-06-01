@@ -1,5 +1,5 @@
 use byteorder::{BigEndian, ByteOrder};
-use {tables, CharacterSet, Config, STANDARD};
+use crate::{tables, CharacterSet, Config, STANDARD};
 
 use std::{error, fmt, str};
 
@@ -537,8 +537,8 @@ mod tests {
     extern crate rand;
 
     use super::*;
-    use encode::encode_config_buf;
-    use tests::{assert_encode_sanity, random_config};
+    use crate::encode::encode_config_buf;
+    use crate::tests::{assert_encode_sanity, random_config};
 
     use self::rand::distributions::{IndependentSample, Range};
     use self::rand::Rng;

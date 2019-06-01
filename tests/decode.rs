@@ -4,7 +4,7 @@ use base64::*;
 
 mod helpers;
 
-use helpers::*;
+use crate::helpers::*;
 
 fn compare_decode_mime(expected: &str, target: &str) {
     assert_eq!(

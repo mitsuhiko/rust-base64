@@ -59,27 +59,24 @@
     missing_docs,
     trivial_casts,
     trivial_numeric_casts,
-    unused_extern_crates,
     unused_import_braces,
     unused_results,
     variant_size_differences,
     warnings
 )]
 
-extern crate byteorder;
-
 mod chunked_encoder;
 pub mod display;
 mod line_wrap;
 mod tables;
 
-use line_wrap::{line_wrap, line_wrap_parameters};
+use crate::line_wrap::{line_wrap, line_wrap_parameters};
 
 mod encode;
-pub use encode::{encode, encode_config, encode_config_buf, encode_config_slice};
+pub use crate::encode::{encode, encode_config, encode_config_buf, encode_config_slice};
 
 mod decode;
-pub use decode::{decode, decode_config, decode_config_buf, decode_config_slice, DecodeError};
+pub use crate::decode::{decode, decode_config, decode_config_buf, decode_config_slice, DecodeError};
 
 #[cfg(test)]
 mod tests;

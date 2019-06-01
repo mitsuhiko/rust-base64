@@ -1,8 +1,8 @@
 extern crate rand;
 
-use encode::encoded_size;
-use line_wrap::line_wrap_parameters;
-use *;
+use crate::encode::encoded_size;
+use crate::line_wrap::line_wrap_parameters;
+use crate::*;
 
 use std::str;
 

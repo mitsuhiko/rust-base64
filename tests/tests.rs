@@ -6,7 +6,7 @@ use rand::Rng;
 use base64::*;
 
 mod helpers;
-use helpers::*;
+use crate::helpers::*;
 
 // generate random contents of the specified length and test encode/decode roundtrip
 fn roundtrip_random(

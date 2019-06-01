@@ -1,5 +1,3 @@
-extern crate safemem;
-
 use super::*;
 
 #[derive(Debug, PartialEq)]

@@ -1,7 +1,7 @@
-use encode::{add_padding, encode_to_slice};
-use line_wrap::line_wrap;
+use crate::encode::{add_padding, encode_to_slice};
+use crate::line_wrap::line_wrap;
 use std::cmp;
-use {Config, LineEnding, LineWrap};
+use crate::{Config, LineEnding, LineWrap};
 
 /// The output mechanism for ChunkedEncoder's encoded bytes.
 pub trait Sink {
@@ -168,8 +168,8 @@ pub mod tests {
     extern crate rand;
 
     use super::*;
-    use tests::random_config;
-    use *;
+    use crate::tests::random_config;
+    use crate::*;
 
     use std::str;
 

@@ -1,5 +1,5 @@
 use byteorder::{BigEndian, ByteOrder};
-use {line_wrap, line_wrap_parameters, Config, LineWrap, STANDARD};
+use crate::{line_wrap, line_wrap_parameters, Config, LineWrap, STANDARD};
 
 ///Encode arbitrary octets as base64.
 ///Returns a String.
@@ -347,9 +347,9 @@ mod tests {
     extern crate rand;
 
     use super::*;
-    use decode::decode_config_buf;
-    use tests::{assert_encode_sanity, random_config};
-    use {CharacterSet, Config, LineEnding, LineWrap, MIME, STANDARD, URL_SAFE_NO_PAD};
+    use crate::decode::decode_config_buf;
+    use crate::tests::{assert_encode_sanity, random_config};
+    use crate::{CharacterSet, Config, LineEnding, LineWrap, MIME, STANDARD, URL_SAFE_NO_PAD};
 
     use self::rand::distributions::{IndependentSample, Range};
     use self::rand::Rng;
